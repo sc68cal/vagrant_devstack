@@ -1,4 +1,4 @@
-box_name: precise
+box_name: trusty
 allocate_memory: 4096
 num_cpus: 2
 
