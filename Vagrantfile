@@ -41,7 +41,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     n_cpus = conf['num_cpus']
     v.customize ["modifyvm", :id, "--cpus", n_cpus.to_s()] if ! n_cpus.nil?
-    v.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
   end
 
   ip_prefix = conf['ip_prefix']
@@ -60,6 +59,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "shell",
     inline: "echo 'APT::Cache-Start 50000000;' > /etc/apt/apt.conf"
+
+  config.vm.provider :virtualbox do |v|
+    v.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
+  end
 
   cookbooks_dir = conf['devstack_cookbooks_dir']
   config.vm.provision :chef_solo do |chef|
