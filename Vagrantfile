@@ -48,12 +48,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   ip_prefix = conf['ip_prefix']
-  ip = "192.168.33.2"
+  ip = "192.168.27.2"
 
   # Management network
   config.vm.network :private_network, ip:ip
   # VM network
-  config.vm.network :private_network, ip:"#{ip_prefix}.2"
+  #config.vm.network :private_network, ip:"#{ip_prefix}.2"
 
   cache_dir = conf['cache_dir']
   config.vm.synced_folder(cache_dir, "/home/vagrant/cache", id: "v-cache", create: true)
@@ -78,8 +78,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.json.merge!({
       :my_ip => ip,
       :devstack => {
-          :flat_interface => "eth2",
-          :public_interface => "eth2",
+          :flat_interface => "eth1",
+          :public_interface => "eth1",
           :floating_range => "#{ip_prefix}.0/24",
           :instances_path => "/home/vagrant/instances", # Quick workaround, for stack.sh cleanup for instances causing deletion of /home/vagrant/ in the midddle of the install
           :host_ip => ip,
