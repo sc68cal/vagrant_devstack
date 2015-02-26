@@ -87,7 +87,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           :host_ip => ip,
           :localconf => localconf,
           :repository => conf['devstack_repo'],
-          :gateway_ip => "#{ip_prefix}.2",
+          :gateway_ip => "#{ip_prefix}.1",
           :branch => conf['devstack_branch']
       },
     })
