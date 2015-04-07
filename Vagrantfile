@@ -48,12 +48,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   ip_prefix = conf['ip_prefix']
-  ip = "192.168.27.2"
+  ip = "#{ip_prefix}.2"
 
-  # Management network
+  # OpenStack API and Tenant data network
   config.vm.network :private_network, ip:ip
-  # VM network
-  #config.vm.network :private_network, ip:"#{ip_prefix}.2"
 
   cache_dir = conf['cache_dir']
   config.vm.synced_folder(cache_dir, "/home/vagrant/cache", id: "v-cache", create: true)
