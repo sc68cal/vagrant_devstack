@@ -52,7 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   ip = "#{ip_prefix}.2"
 
   # OpenStack API and Tenant data network
-  config.vm.network "public_network", bridge: conf['host_bridge']
+  config.vm.network "public_network", bridge: conf['host_bridge'], ip:ip
 
   cache_dir = conf['cache_dir']
   config.vm.synced_folder(cache_dir, "/home/vagrant/cache", id: "v-cache", create: true)
