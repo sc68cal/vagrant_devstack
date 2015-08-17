@@ -9,6 +9,7 @@ conf = {
     'ssh_dir' => '~/.ssh/',
     'devstack_repo' => 'git://github.com/openstack-dev/devstack.git',
     'devstack_branch' => 'master',
+    'host_bridge' => ''
 }
 
 
@@ -51,7 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   ip = "#{ip_prefix}.2"
 
   # OpenStack API and Tenant data network
-  config.vm.network :private_network, ip:ip
+  config.vm.network "public_network", bridge: conf['host_bridge']
 
   cache_dir = conf['cache_dir']
   config.vm.synced_folder(cache_dir, "/home/vagrant/cache", id: "v-cache", create: true)
