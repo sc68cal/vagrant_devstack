@@ -60,8 +60,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   ssh_dir = conf['ssh_dir']
   config.vm.synced_folder(ssh_dir, "/home/vagrant/.host-ssh", id: "v-ssh", create: true)
 
-  config.vm.synced_folder("~/src/openstack", "/home/vagrant/src", id:"v-src", create: true)
-
   config.vm.provision "shell",
     inline: "echo 'APT::Cache-Start 50000000;' > /etc/apt/apt.conf"
 
