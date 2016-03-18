@@ -60,7 +60,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   ssh_dir = conf['ssh_dir']
   config.vm.synced_folder(ssh_dir, "/home/vagrant/.host-ssh", id: "v-ssh", create: true)
 
-  config.vm.synced_folder("~/src/openstack", "/home/vagrant/src", id:"v-src", create: true)
+  config.vm.synced_folder("~/src/openstack", "/home/vagrant/openstack", id:"v-src", create: true)
 
   config.vm.synced_folder("~/src/openstack-dev/devstack", "/home/vagrant/devstack", id:"v-devstack", create:true)
 
