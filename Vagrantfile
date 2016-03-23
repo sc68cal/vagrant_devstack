@@ -1,7 +1,7 @@
 
 # Override these values with a local config defined in VD_CONF
 conf = {
-    'ip_prefix' => '192.168.27',
+    'ip_prefix' => '203.0.113',
     'box_name' => 'wily',
     'box_url' => 'https://cloud-images.ubuntu.com/vagrant/wily/20160105.1/wily-server-cloudimg-i386-vagrant-disk1.box',
     'allocate_memory' => 4096,
@@ -53,6 +53,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # OpenStack API and Tenant data network
   config.vm.network "public_network", bridge: conf['host_bridge'], ip:ip
+
+  # OpenStack control plane
+  config.vm.network "private_network", ip: "10.0.0.2"
 
   cache_dir = conf['cache_dir']
   config.vm.synced_folder(cache_dir, "/home/vagrant/cache", id: "v-cache", create: true)
