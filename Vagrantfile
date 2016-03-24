@@ -2,8 +2,7 @@
 # Override these values with a local config defined in VD_CONF
 conf = {
     'ip_prefix' => '203.0.113',
-    'box_name' => 'wily',
-    'box_url' => 'https://cloud-images.ubuntu.com/vagrant/wily/20160105.1/wily-server-cloudimg-i386-vagrant-disk1.box',
+    'box_name' => 'ubuntu/wily64',
     'allocate_memory' => 4096,
     'cache_dir' => 'cache/',
     'ssh_dir' => '~/.ssh/',
