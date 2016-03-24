@@ -34,7 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = conf['box_url']
 
   config.vm.provider :virtualbox do |v|
-    v.name = conf['box_name']
+    v.name = 'vagrant-devstack-control-node'
 
     memory = conf['allocate_memory'].to_s()
     v.customize ["modifyvm", :id, "--memory", memory]
