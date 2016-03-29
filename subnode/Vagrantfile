@@ -36,6 +36,8 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", privileged:false,
     inline: "cp /vagrant/local.conf ~/devstack/"
 
+  config.vm.post_up_message = "Subnodes built - SSH in and run stack.sh"
+
   config.vm.synced_folder("~/src/openstack", "/home/vagrant/openstack", id:"v-openstack-src", create: true)
    config.vm.synced_folder("~/src/openstack-dev", "/home/vagrant/openstack-dev", id:"v-openstack-dev", create: true)
 end
