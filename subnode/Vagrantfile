@@ -1,5 +1,10 @@
 Vagrant.configure(2) do |config|
 
+  # Use caches
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end
+
   config.vm.define "node1", primary: true do |node1|
     node1.vm.box = "ubuntu/trusty64"
     node1.vm.network "private_network", ip: "10.0.0.3"
